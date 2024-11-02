@@ -1,7 +1,23 @@
-
+/* Manter o dropdown aberto ao passar o mouse */
 .dropdown:hover .dropdown-menu {
-    display: block;
-    margin-top: 0; /* Remove o espaçamento padrão ao abrir */
-  }
+  display: block;
+  margin-top: 0; /* Remove o espaçamento padrão ao abrir */
+}
+
+/* Cor do link padrão */
+.nav-link {
+  color: black;
+}
+
+/* Cor do link ao passar o mouse */
+.nav-link:hover {
+  color: rgb(146, 146, 146);
+}
 
 
+
+.nav-item .nav-link:focus,
+.nav-item .nav-link:active {
+  background-color: #f8f9fa; /* Cor desejada ao clicar */
+  color: #000; /* Cor do texto */
+}
