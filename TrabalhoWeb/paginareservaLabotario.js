@@ -1,10 +1,10 @@
 document.getElementById('botao').addEventListener('click', function() {
     const valorInput = document.getElementById('input').value;
-    fetch('http://localhost:8081/api/receber-dado', {
+    fetch('http://localhost:8080/api/teste', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
-        },
+        }, 
         body: JSON.stringify({ conteudo: valorInput }) // Envia o valor do input
     })
     .then(response => {

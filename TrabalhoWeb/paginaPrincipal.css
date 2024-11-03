@@ -1,23 +1,25 @@
-/* Manter o dropdown aberto ao passar o mouse */
-.dropdown:hover .dropdown-menu {
-  display: block;
-  margin-top: 0; /* Remove o espaçamento padrão ao abrir */
+html {
+  scroll-behavior: smooth;
 }
-
-/* Cor do link padrão */
+/* navbar topo */
 .nav-link {
   color: black;
 }
-
-/* Cor do link ao passar o mouse */
+/* navbar topo */
 .nav-link:hover {
   color: rgb(146, 146, 146);
 }
-
-
-
-.nav-item .nav-link:focus,
-.nav-item .nav-link:active {
-  background-color: #f8f9fa; /* Cor desejada ao clicar */
-  color: #000; /* Cor do texto */
+/* dropdown estilizado */
+.dropdown-menu .dropdown-item:focus, 
+.dropdown-menu .dropdown-item:hover {
+  background-color: #b1b9c2; 
+  color: #000; 
 }
+.dropdown:hover .dropdown-menu {
+  display: block;
+  margin-top: 0; 
+}
+footer p {
+  color: black;
+}
+
