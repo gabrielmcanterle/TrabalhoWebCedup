@@ -63,11 +63,17 @@
         </header>
     </div>
 
-  
-    
+
     <div class="container p-4 shadow rounded" style="max-width: 400px;">
       <h1 class="mt-2 text-center pb-4">Reserva de Sala de Laboratório</h1>
       <form id="reservation-form">
+
+         <!-- Seleção da Data -->
+         <div class="mb-3">
+          <label for="data" class="form-label">Escolha a Data:</label>
+          <input type="date" class="form-control" id="data" required>
+      </div>
+      
           <!-- Seleção do Laboratório -->
           <div class="mb-3">
               <label for="laboratorio" class="form-label">Escolha o Laboratório:</label>
@@ -118,12 +124,6 @@
   <small class="form-text text-muted">Você pode selecionar uma ou mais aulas.</small>
 </div>
 
-
-          <!-- Seleção da Data -->
-          <div class="mb-3">
-              <label for="data" class="form-label">Escolha a Data:</label>
-              <input type="date" class="form-control" id="data" required>
-          </div>
 
           <!-- Botão de Submissão -->
           <button type="submit" class="btn btn-primary">Reservar</button>
