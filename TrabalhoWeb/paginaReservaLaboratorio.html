@@ -8,6 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     
     <link rel="stylesheet" href="paginaPrincipal.css">
+    <link rel="stylesheet" href="paginaReserva.css">
     
 </head>
 <body>
@@ -64,71 +65,46 @@
     </div>
 
 
-    <div class="container p-4 shadow rounded" style="max-width: 400px;">
-      <h1 class="mt-2 text-center pb-4">Reserva de Sala de Laboratório</h1>
-      <form id="reservation-form">
+  
+        
+    
 
-         <!-- Seleção da Data -->
-         <div class="mb-3">
-          <label for="data" class="form-label">Escolha a Data:</label>
-          <input type="date" class="form-control" id="data" required>
-      </div>
-      
-          <!-- Seleção do Laboratório -->
-          <div class="mb-3">
-              <label for="laboratorio" class="form-label">Escolha o Laboratório:</label>
-              <select class="form-select" id="laboratorio" required>
-                  <option selected disabled>Selecione um laboratório</option>
-                  <option value="lab1">Laboratório 1</option>
-                  <option value="lab2">Laboratório 2</option>
-                  <option value="lab3">Laboratório 3</option>
-                  <option value="lab4">Laboratório 4</option>
-                  <option value="lab5">Laboratório 5</option>
-              </select>
-          </div>
+    <h1>Calendário de Aulas</h1>
 
-          <!-- Seleção do Período -->
-          <div class="mb-3">
-              <label for="periodo" class="form-label">Escolha o Período:</label>
-              <select class="form-select" id="periodo" required>
-                  <option selected disabled>Selecione o período</option>
-                  <option value="manha">Manhã</option>
-                  <option value="tarde">Tarde</option>
-                  <option value="noite">Noite</option>
-              </select>
-          </div>
+    <!-- Controles para selecionar mês e período -->
+    <div class="controls">
+        <select id="monthSelect" onchange="updateCalendar()">
+            <option value="0">Janeiro</option>
+            <option value="1">Fevereiro</option>
+            <option value="2">Março</option>
+            <option value="3">Abril</option>
+            <option value="4">Maio</option>
+            <option value="5">Junho</option>
+            <option value="6">Julho</option>
+            <option value="7">Agosto</option>
+            <option value="8">Setembro</option>
+            <option value="9">Outubro</option>
+            <option value="10">Novembro</option>
+            <option value="11">Dezembro</option>
+        </select>
 
-      <!-- Seleção da Aula (opcional com checkboxes) -->
-<div class="mb-3">
-  <label class="form-label">Escolha a Aula:</label>
-  <div class="form-check">
-      <input class="form-check-input" type="checkbox" value="1a" id="aula1">
-      <label class="form-check-label" for="aula1">1ª Aula</label>
-  </div>
-  <div class="form-check">
-      <input class="form-check-input" type="checkbox" value="2a" id="aula2">
-      <label class="form-check-label" for="aula2">2ª Aula</label>
-  </div>
-  <div class="form-check">
-      <input class="form-check-input" type="checkbox" value="3a" id="aula3">
-      <label class="form-check-label" for="aula3">3ª Aula</label>
-  </div>
-  <div class="form-check">
-      <input class="form-check-input" type="checkbox" value="4a" id="aula4">
-      <label class="form-check-label" for="aula4">4ª Aula</label>
-  </div>
-  <div class="form-check">
-      <input class="form-check-input" type="checkbox" value="5a" id="aula5">
-      <label class="form-check-label" for="aula5">5ª Aula</label>
-  </div>
-  <small class="form-text text-muted">Você pode selecionar uma ou mais aulas.</small>
-</div>
+        <select id="periodSelect" onchange="updateCalendar()">
+            <option value="manha">Manhã</option>
+            <option value="tarde">Tarde</option>
+            <option value="noite">Noite</option>
+        </select>
+    </div>
 
+    <!-- Tabela do Calendário -->
+    <div id="calendarContainer"></div>
 
-          <!-- Botão de Submissão -->
-          <button type="submit" class="btn btn-primary">Reservar</button>
-      </form>
-  </div>
+    <!-- Controles de navegação de semana -->
+    <div class="week-controls">
+        <button onclick="navigateWeek(-1)">Semana Anterior</button>
+        <button onclick="navigateWeek(1)">Semana Seguinte</button>
+    </div>
+   
+
 
 
     <!-- Scripts do Bootstrap 5.3 -->
