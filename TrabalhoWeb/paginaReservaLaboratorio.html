@@ -68,41 +68,64 @@
   
         
     
+    <div class="container p-4 shadow rounded" style="max-width: 400px;">
+      <h1 class="mt-2 text-center pb-4">Reserva de Sala de Laboratório</h1>
+      <form id="reservation-form">
+          
+        
+        <!-- Seleção da Data -->
+        <div class="mb-3">
+          <label for="data" class="form-label">Escolha a Data:</label>
+          <input type="date" class="form-control" id="data" required>
+      </div>
 
-    <h1>Calendário de Aulas</h1>
 
-    <!-- Controles para selecionar mês e período -->
-    <div class="controls">
-        <select id="monthSelect" onchange="updateCalendar()">
-            <option value="0">Janeiro</option>
-            <option value="1">Fevereiro</option>
-            <option value="2">Março</option>
-            <option value="3">Abril</option>
-            <option value="4">Maio</option>
-            <option value="5">Junho</option>
-            <option value="6">Julho</option>
-            <option value="7">Agosto</option>
-            <option value="8">Setembro</option>
-            <option value="9">Outubro</option>
-            <option value="10">Novembro</option>
-            <option value="11">Dezembro</option>
-        </select>
-
-        <select id="periodSelect" onchange="updateCalendar()">
+      <!-- Seleção do Período -->
+      <div class="mb-3">
+        <label for="periodo" class="form-label">Escolha o Período:</label>
+        <select class="form-select" id="periodo" required>
+            <option selected disabled>Selecione o período</option>
             <option value="manha">Manhã</option>
             <option value="tarde">Tarde</option>
             <option value="noite">Noite</option>
         </select>
     </div>
 
-    <!-- Tabela do Calendário -->
-    <div id="calendarContainer"></div>
 
-    <!-- Controles de navegação de semana -->
-    <div class="week-controls">
-        <button onclick="navigateWeek(-1)">Semana Anterior</button>
-        <button onclick="navigateWeek(1)">Semana Seguinte</button>
+          <div class="mb-3">
+              <label for="laboratorio" class="form-label">Escolha o Laboratório:</label>
+              <select class="form-select" id="laboratorio" required>
+                  <option selected disabled>Selecione um laboratório</option>
+                  <option value="lab1">Laboratório 1</option>
+                  <option value="lab2">Laboratório 2</option>
+                  <option value="lab3">Laboratório 3</option>
+                  <option value="lab4">Laboratório 4</option>
+                  <option value="lab5">Laboratório 5</option>
+              </select>
+          </div>
+
+          
+
+      <!-- Seleção da Aula (opcional com checkboxes) -->
+      <div class="mb-3">
+        <label for="aula" class="form-label">Escolha a Aula:</label>
+        <select class="form-select" id="aula" required>
+            <option selected disabled>Selecione a Aula</option>
+            <option value="aula1">Aula 1</option>
+            <option value="aula2">Aula 2</option>
+            <option value="aula3">Aula 3</option>
+            <option value="aula4">Aula 4</option>
+            <option value="aula5">Aula 5</option>
+        </select>
     </div>
+
+
+          
+
+          <!-- Botão de Submissão -->
+          <button type="submit" class="btn btn-primary">Reservar</button>
+      </form>
+  </div>
    
 
 

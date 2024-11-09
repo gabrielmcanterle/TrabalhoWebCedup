@@ -1,123 +1,128 @@
-let reservedLessons = {}; // Para armazenar as aulas reservadas
-        let currentWeek = 0; // Semana atual sendo exibida
-        let totalWeeks = 0; // Total de semanas no mês
-        let totalDays = 0; // Total de dias úteis no mês
+// Função comum para realizar requisições e atualizar opções
+function atualizarOpcoes(url, elementoSelect, mensagem) {
+    fetch(url)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Erro ao obter dados.");
+            }
+            return response.json();
+        })
+        .then(dados => {
+            elementoSelect.innerHTML = `<option value="">${mensagem}</option>`;
 
-        // Função para formatar a data para 'YYYY-MM-DD'
-        function formatDate(year, month, day) {
-            return `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
-        }
+            if (dados.length > 0) {
+                dados.forEach(dado => {
+                    const option = document.createElement("option");
+                    option.value = dado;
+                    option.textContent = dado;
+                    elementoSelect.appendChild(option);
+                });
+                elementoSelect.disabled = false;
+            } else {
+                elementoSelect.disabled = true;
+                alert(`Não há ${mensagem.toLowerCase()} disponíveis.`);
+            }
+        })
+        .catch(error => {
+            console.error("Erro:", error);
+            alert("Houve um problema ao obter os dados.");
+        });
+}
 
-        // Função para atualizar o calendário
-        async function updateCalendar(reservas = []) {
-            const currentMonth = document.getElementById('monthSelect').value;
-            const period = document.getElementById('periodSelect').value;
-            const monthNames = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", 
-                                "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
-            const daysOfWeek = ["Segunda", "Terça", "Quarta", "Quinta", "Sexta"];
-            
-            const firstDayOfMonth = new Date(2024, currentMonth, 1);
-            const lastDayOfMonth = new Date(2024, currentMonth + 1, 0);
-            totalDays = lastDayOfMonth.getDate();
-            const firstDayWeekday = firstDayOfMonth.getDay();
+// Atualiza as opções de períodos e laboratórios quando a data é alterada
+document.getElementById("data").addEventListener("change", function() {
+    const data = this.value;
+    const periodoSelect = document.getElementById("periodo");
+    const laboratorioSelect = document.getElementById("laboratorio");
 
-            totalWeeks = Math.ceil((totalDays + firstDayWeekday) / 5); // 5 dias úteis por semana
+    if (data) {
+        atualizarOpcoes(`http://localhost:8080/api/reservas/verificarData?data=${data}`, periodoSelect, "Selecione um período");
+    }
+   
+    laboratorioSelect.innerHTML = '<option value="">Selecione um laboratório</option>';
+    laboratorioSelect.disabled = true;
+});
 
-            let calendarHTML = `<h2 style="text-align:center">${monthNames[currentMonth]} - ${period === 'manha' ? 'Manhã' : period === 'tarde' ? 'Tarde' : 'Noite'}</h2>`;
-            calendarHTML += `<table><thead><tr>`;
-            daysOfWeek.forEach(day => {
-                calendarHTML += `<th>${day}</th>`;
+// Atualiza os laboratórios disponíveis quando a data e o período são selecionados
+document.getElementById("periodo").addEventListener("change", function() {
+    const data = document.getElementById("data").value;
+    const periodo = this.value;
+    const laboratorioSelect = document.getElementById("laboratorio");
+
+    if (data && periodo) {
+        atualizarOpcoes(`http://localhost:8080/api/reservas/verificarLaboratoriosPorPeriodo?data=${data}&periodo=${periodo}`, laboratorioSelect, "Selecione um laboratório");
+    }
+});
+
+// Atualiza as aulas disponíveis quando a data, período e laboratório são selecionados
+document.getElementById("laboratorio").addEventListener("change", function() {
+    const data = document.getElementById("data").value;
+    const periodo = document.getElementById("periodo").value;
+    const laboratorio = this.value;
+    const aulaSelect = document.getElementById("aula");
+
+    if (data && periodo && laboratorio) {
+        fetch(`http://localhost:8080/api/reservas/verificarAulas?data=${data}&periodo=${periodo}&laboratorio=${laboratorio}`)
+            .then(response => response.json())
+            .then(aulas => {
+                
+                aulaSelect.innerHTML = '<option value="">Selecione uma Aula</option>';
+
+                aulas.forEach(aula => {
+                    const option = document.createElement("option");
+                    option.value = aula;
+                    option.textContent = aula;
+                    aulaSelect.appendChild(option);
+                });
+            })
+            .catch(error => {
+                console.error("Erro ao obter aulas:", error);
+                alert("Houve um problema ao obter as aulas disponíveis.");
             });
-            calendarHTML += `</tr></thead><tbody>`;
+    }
+});
 
-            let dayCounter = 1;
-            for (let i = 0; i < totalWeeks; i++) { // Para cada semana
-                calendarHTML += `<tr>`;
-                for (let j = 0; j < 5; j++) { // Para cada dia útil (segunda a sexta)
-                    if (dayCounter <= totalDays) {
-                        calendarHTML += `<td>`;
-                        calendarHTML += `<div><strong>Dia ${dayCounter}</strong></div>`;
+// Função de envio do formulário
+document.getElementById("reservation-form").addEventListener("submit", function(event) {
+    event.preventDefault();
 
-                        // Verificar se há reservas para esse dia e período
-                        reservas.forEach(reserva => {
-                            const reservaDate = new Date(reserva.data);
-                            const dayMatch = reservaDate.getDate() === dayCounter;
-                            const periodMatch = reserva.periodo === period;
-                            if (dayMatch && periodMatch) {
-                                const lessonId = `${dayCounter}-${reserva.aula}`;
-                                reservedLessons[lessonId] = true;
-                            }
-                        });
+    const laboratorio = document.getElementById("laboratorio").value;
+    const periodo = document.getElementById("periodo").value;
+    const aula = document.getElementById("aula").value;
+    const data = document.getElementById("data").value;
 
-                        // Adicionando as aulas para o dia
-                        for (let k = 0; k < 5; k++) {
-                            const lessonId = `${dayCounter}-${k}`;
-                            const isReserved = reservedLessons[lessonId] || false;
-                            const lessonClass = isReserved ? "lesson reserved" : "lesson";
+    const reserva = { data, periodo, laboratorio, aula };
+    console.log("Dados a serem enviados:", reserva);
 
-                            calendarHTML += `<div class="${lessonClass}" id="lesson-${lessonId}">
-                                                <div class="lesson-time">Aula ${k + 1}</div>
-                                                <div class="lesson-name">Descrição da Aula ${k + 1}</div>
-                                                <button class="reserve-btn" onclick="reserveLesson('${lessonId}', ${dayCounter}, ${k})" ${isReserved ? 'disabled' : ''}>Reservar</button>
-                                            </div>`;
-                        }
-                        calendarHTML += `</td>`;
-                    } else {
-                        calendarHTML += `<td></td>`;
-                    }
-                    dayCounter++;
-                }
-                calendarHTML += `</tr>`;
-            }
-
-            calendarHTML += `</tbody></table>`;
-
-            // Inserindo o conteúdo do calendário na página
-            document.getElementById('calendarContainer').innerHTML = calendarHTML;
+    fetch("http://localhost:8080/api/reservas", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(reserva)
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error("Erro na reserva");
         }
-
-        // Função para reservar uma aula
-        function reserveLesson(lessonId, day, lessonNumber) {
-            reservedLessons[lessonId] = true;
-            const lessonElement = document.getElementById(`lesson-${lessonId}`);
-            lessonElement.classList.add("reserved");
-            lessonElement.querySelector(".reserve-btn").disabled = true;
-            lessonElement.querySelector(".reserve-btn").innerText = "Reservada";
-            alert(`Aula ${lessonNumber + 1} no dia ${day} reservada com sucesso!`);
+        if (response.status === 204) {
+            console.log("Resposta vazia (204 No Content)");
+            return;
         }
-
-        // Função para obter as reservas de aulas do backend
-        async function getReservations() {
-            const laboratorio = "lab1";  // Exemplo de laboratório
-            const periodo = document.getElementById('periodSelect').value;
-            const aula = "A1";  // Exemplo de aula
-            const descricao = "";  // Descrição opcional
-            const currentMonth = document.getElementById('monthSelect').value;
-            const day = "01";  // Usando o primeiro dia como exemplo
-            const formattedMonth = (currentMonth + 1).toString().padStart(2, '0');
-            const data = `2024-${formattedMonth}-${day}`;
-
-            const url = `http://127.0.0.1:8080/api/reservas/verificarAulasReservadas?laboratorio=${laboratorio}&data=${data}&periodo=${periodo}&aula=${aula}&descricao=${descricao}`;
-
-            try {
-                const response = await fetch(url);
-                if (!response.ok) throw new Error('Erro ao obter as reservas.');
-                const reservas = await response.json();
-
-                if (reservas && reservas.length > 0) {
-                    console.log("Dados recebidos:", reservas);
-                    updateCalendar(reservas);
-                } else {
-                    console.log("Nenhuma reserva encontrada.");
-                    alert("Não há aulas reservadas para esta data/período.");
-                }
-            } catch (error) {
-                console.error('Erro na requisição:', error);
-                alert("Ocorreu um erro ao carregar as reservas.");
-            }
+        return response.json();
+    })
+    .then(data => {
+        if (data) {
+            alert("Reserva criada com sucesso!");
+            document.getElementById("reservation-form").reset();
+            limparTabelas();
         }
+    })
+    .catch(error => {
+        console.error("Erro:", error);
+    });
+});
 
-        // Inicializa o calendário ao carregar a página
-        window.onload = function() {
-            getReservations();  // Carrega as reservas ao carregar a página
-        };
+
+function limparTabelas() {
+    const tabelas = document.querySelectorAll(".tabela");
+    tabelas.forEach(tabela => tabela.innerHTML = '');
+}
