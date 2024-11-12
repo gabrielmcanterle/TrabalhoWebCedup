@@ -1,0 +1,63 @@
+.container {
+    width: 100%;
+    margin: 20px auto;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.table {
+    width: 100%;
+    margin-top: 20px;
+    font-size: 14px; /* Ajusta o tamanho da fonte para ser mais compacto */
+}
+
+.table th, .table td {
+    text-align: center;
+    vertical-align: middle;
+    padding: 8px;
+}
+
+button.remove-btn {
+    background-color: #dc3545; /* Cor vermelha para indicar remoção */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button.remove-btn:hover {
+    background-color: #c82333;
+}
+html {
+    scroll-behavior: smooth;
+  }
+  
+  /* navbar topo */
+  .nav-link {
+    color: black;
+  }
+  
+  /* navbar topo */
+  .nav-link:hover {
+    color: rgb(146, 146, 146);
+  }
+  
+  /* dropdown estilizado */
+  .dropdown-menu .dropdown-item:focus,
+  .dropdown-menu .dropdown-item:hover {
+    background-color: #b1b9c2;
+    color: #000;
+  }
+  
+  .dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0;
+  }
+  
+  footer p {
+    color: black;
+  }

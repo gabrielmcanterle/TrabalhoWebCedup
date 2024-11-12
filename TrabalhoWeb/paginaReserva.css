@@ -73,3 +73,30 @@ td {
     padding: 5px 10px;
     margin: 5px;
 }
+html {
+    scroll-behavior: smooth;
+  }
+  /* navbar topo */
+  .nav-link {
+    color: black;
+  }
+  /* navbar topo */
+  .nav-link:hover {
+    color: rgb(146, 146, 146);
+  }
+  /* dropdown estilizado */
+  .dropdown-menu .dropdown-item:focus, 
+  .dropdown-menu .dropdown-item:hover {
+    background-color: #b1b9c2; 
+    color: #000; 
+  }
+  .dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0; 
+  }
+  footer p {
+    color: black;
+  }
+  
+  
+  

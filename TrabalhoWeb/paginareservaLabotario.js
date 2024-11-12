@@ -1,4 +1,21 @@
-// Função comum para realizar requisições e atualizar opções
+document.addEventListener('DOMContentLoaded', function () {
+    const usuarioLogado = localStorage.getItem('usuarioLogado');
+
+    if (usuarioLogado) {
+        const usuario = JSON.parse(usuarioLogado);
+        const loginButton = document.getElementById('loginButton');
+        if (loginButton) {
+            loginButton.style.display = 'none';
+        }
+        const usuarioNome = document.getElementById('usuarioNome');
+        const userNameLink = document.getElementById('userName');
+        if (usuarioNome && userNameLink) {
+            usuarioNome.style.display = 'block';
+            userNameLink.innerText = `Olá, ${usuario.nome}`;
+        }
+    }
+});
+
 function atualizarOpcoes(url, elementoSelect, mensagem) {
     fetch(url)
         .then(response => {
@@ -82,16 +99,40 @@ document.getElementById("laboratorio").addEventListener("change", function() {
     }
 });
 
-// Função de envio do formulário
 document.getElementById("reservation-form").addEventListener("submit", function(event) {
     event.preventDefault();
 
+    const usuarioLogado = localStorage.getItem('usuarioLogado');
+    if (!usuarioLogado) {
+        alert("Usuário não encontrado. Faça login novamente.");
+        return;
+    }
+
+    const usuario1 = JSON.parse(usuarioLogado);
+    console.log("Usuário logado:", usuario1); // Verifique o conteúdo do usuário logado
+
+    if (!usuario1 || !usuario1.idUsuario) {  // Aqui, usamos 'idUsuario' e não 'id'
+        alert("ID do usuário não encontrado.");
+        return;
+    }
+
+    const usuario = usuario1;  
+
+    // Pega os dados do formulário
     const laboratorio = document.getElementById("laboratorio").value;
     const periodo = document.getElementById("periodo").value;
     const aula = document.getElementById("aula").value;
     const data = document.getElementById("data").value;
 
-    const reserva = { data, periodo, laboratorio, aula };
+    // Cria o objeto de reserva, incluindo o ID do usuário com o nome correto (id_usuario)
+    const reserva = { 
+        data, 
+        periodo, 
+        laboratorio, 
+        aula,
+        usuario  
+    };
+
     console.log("Dados a serem enviados:", reserva);
 
     fetch("http://localhost:8080/api/reservas", {
@@ -120,6 +161,9 @@ document.getElementById("reservation-form").addEventListener("submit", function(
         console.error("Erro:", error);
     });
 });
+
+
+
 
 
 function limparTabelas() {
