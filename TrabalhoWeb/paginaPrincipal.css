@@ -6,7 +6,8 @@ html {
   color: black;
 }
 /* navbar topo */
-.nav-link:hover {
+.nav-link:hover,
+.nav-link:focus {
   color: rgb(146, 146, 146);
 }
 /* dropdown estilizado */
@@ -22,5 +23,6 @@ html {
 footer p {
   color: black;
 }
+
 
 
