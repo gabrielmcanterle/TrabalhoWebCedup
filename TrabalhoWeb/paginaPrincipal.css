@@ -24,5 +24,35 @@ footer p {
   color: black;
 }
 
+@media (max-width: 992px) {
+  .navbar-collapse {
+    position: absolute; /* Fica sobre o conteúdo */
+    top: 100%; /* Coloca o menu logo abaixo da barra de navegação */
+    left: 0;
+    right: 0;
+    z-index: 1050; /* Garante que o menu fique por cima */
+    background-color: #f8f9fa; /* Garantir que o fundo do menu seja visível */
+  }
 
+  /* Garantir que o menu não empurre o conteúdo abaixo */
+  .navbar-nav {
+    width: 100%;
+    text-align: center;
+  }
+}
+/* Estilos para garantir que o dropdown não empurre os outros itens da navbar */
+.navbar-nav .dropdown-menu {
+  position: absolute; /* Fica sobre o conteúdo e não afeta o layout */
+   left: 50%;
+  transform: translateX(-50%);
+}
+
+.navbar-nav .dropdown:hover .dropdown-menu {
+  display: block; /* Exibe o dropdown quando o item de menu for hover */
+}
+@media (max-width: 768px) {
+  .text-center {
+    text-align: left;
+  }
+}
 
