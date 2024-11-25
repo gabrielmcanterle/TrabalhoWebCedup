@@ -50,6 +50,9 @@ footer p {
 .navbar-nav .dropdown:hover .dropdown-menu {
   display: block; /* Exibe o dropdown quando o item de menu for hover */
 }
-
-
+@media (max-width: 768px) {
+  .text-center {
+    text-align: left;
+  }
+}
 

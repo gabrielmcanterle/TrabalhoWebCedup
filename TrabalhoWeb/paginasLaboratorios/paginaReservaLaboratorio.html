@@ -5,16 +5,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cedup Hermann Hering</title>
-
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="paginaPrincipal.css">
- 
-  
-
+  <link rel="stylesheet" href="estilizacaoLaboratorios.css">
 </head>
 
 <body>
-
   <div class="container">
     <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
       <a href="/paginaPrincipal.html" class="navbar-brand">
@@ -61,7 +56,7 @@
             </a>
             <ul class="dropdown-menu" aria-labelledby="dropdownInstituicao">
               <li><a class="dropdown-item" href="/paginasInstituicao/paginaHistoria.html">História</a></li>
-              <li><a class="dropdown-item" href="/paginasInstituicao/paginaInstituicao.html">A Instituição</a></li>
+                <li><a class="dropdown-item" href="/paginasInstituicao/paginaInstituicao.html">A Instituição</a></li>
             </ul>
           </li>
           <!-- Dropdown Horários -->
@@ -95,82 +90,59 @@
           </li>
           <li class="nav-item">
             <div class="text-center" id="loginButton">
-              <a href="/paginaLogin/paginaLogin.html"><button type="button" class="btn btn-outline-primary me-2">Login</button></a>
+              <a href="paginaLogin.html"><button type="button" class="btn btn-outline-primary me-2">Login</button></a>
             </div>
           </li>
         </ul>
       </div>
     </nav>
   </div>
-  
 
 
-  
-      <div class="container col-xxl-8 px-4 pb-4 mt-5">
-        <div class="row flex-column flex-md-column flex-lg-row align-items-center g-5 pb-5">
-          <div class="col-10 col-sm-8 col-lg-6">
-            <img src="../images/cedup.jpg" class="d-block mx-auto img-fluid" alt="Bootstrap Themes" width="500px" height="500px" loading="lazy">
-          </div>
-          <div class="col-lg-6">
-            <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Instituição Gratuita e de Qualidade</h1>
-            <p class="lead">Faça como os nossos mais de 300 alunos, e se prepare para o mercado de trabalho!</p>
-            <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-              <a href="#cursos">
-                <button type="button" class="btn btn-primary btn-lg px-4 me-md-2">Conheça nossos cursos</button>
-              </a>
-            </div>
-          </div>
-        </div>
+  <div class="container p-4 shadow rounded mt-5" style="max-width: 400px;">
+    <h1 class="mt-2 text-center pb-4">Reserva de Sala de Laboratório</h1>
+    <form id="reservation-form">
+      <div class="mb-3">
+        <label for="data" class="form-label">Escolha a Data:</label>
+        <input type="date" class="form-control" id="data" required>
       </div>
-      
-    
-
-      <div class="container marketing">
-        <hr class="featurette-divider">
-        <div class="row featurette">
-          <div class="col-md-7 order-2 order-md-1 text-center mt-4 mt-md-0">
-            <h1 class="featurette-heading fw-normal lh-1 mt-lg-5">Curso Técnico Pós-Médio</h1>
-            <p class="lead">O curso técnico prepara os alunos com conhecimentos práticos e teóricos para o mercado de 
-              trabalho. Focado em áreas específicas, combina aprendizado em
-               sala de aula e experiências práticas, formando profissionais qualificados em menos tempo.</p>
-          </div>
-          <div class="col-md-5 order-1 order-md-2">
-            <img src="/images/1.png" alt="" class="img-fluid" width="500px" height="300px">
-          </div>
-        </div>
-      
-      
-      
-
-    <hr class="featurette-divider">
-
-    <div class="row featurette">
-      <div class="col-md-7 order-2 order-md-1 text-center mt-4 mt-md-0">
-        <h1 class="featurette-heading fw-normal lh-1 mt-lg-5">Ensino médio Integrado</h1>
-        <p class="lead ms-lg-5">O Ensino Médio Integrado combina a formação acadêmica com o 
-          aprendizado técnico, preparando os alunos tanto para o mercado de trabalho quanto para o ensino superior. 
-          Nossa instituição oferece uma educação completa, 
-          unindo teoria e prática, para formar profissionais qualificados e cidadãos preparados para os
-           desafios do futuro.</p>
+      <div class="mb-3">
+        <label for="periodo" class="form-label">Escolha o Período:</label>
+        <select class="form-select" id="periodo" required>
+          <option selected disabled>Selecione o período</option>
+          <option value="manha">Manhã</option>
+          <option value="tarde">Tarde</option>
+          <option value="noite">Noite</option>
+        </select>
       </div>
-      <div class="col-md-5 order-1 order-md-2">
-        <img src="/images/2.png" alt="" class="img-fluid" width="500px" height="300px">
+      <div class="mb-3">
+        <label for="laboratorio" class="form-label">Escolha o Laboratório:</label>
+        <select class="form-select" id="laboratorio" required>
+          <option selected disabled>Selecione um laboratório</option>
+          <option value="lab1">Laboratório 1</option>
+          <option value="lab2">Laboratório 2</option>
+          <option value="lab3">Laboratório 3</option>
+          <option value="lab4">Laboratório 4</option>
+          <option value="lab5">Laboratório 5</option>
+        </select>
       </div>
-    </div>
-
-    <hr class="featurette-divider">
-
+      <div class="mb-3">
+        <label for="aula" class="form-label">Escolha a Aula:</label>
+        <select class="form-select" id="aula" required>
+          <option selected disabled>Selecione a Aula</option>
+          <option value="aula1">Aula 1</option>
+          <option value="aula2">Aula 2</option>
+          <option value="aula3">Aula 3</option>
+          <option value="aula4">Aula 4</option>
+          <option value="aula5">Aula 5</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary">Reservar</button>
+      <a href="/paginasLaboratorios/paginaReservas.html"><button type="button" class="btn btn-primary">Minhas Reservas</button></a>
+      
+    </form>
   </div>
 
-  <div class="container my-5">
-    <div class="p-5 text-center bg-body-tertiary rounded-3">
-      <h1 class="text-body-emphasis">Ficou com dúvidas?</h1>
-      <p class="lead">
-        Entre em contato conosco ou nos visite; estaremos de portas abertas para <code>você!</code>
-      </p>
-      <a href=""><button type="button" class="btn btn-outline-dark">Fale Conosco</button></a>
-    </div>
-  </div>
 
   <div class="container">
     <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
@@ -182,14 +154,10 @@
       <p class="col-12 col-md-3 mb-0 text-body-secondary text-center text-md-end">Cedup Hermann Hering, desde 1979.</p>
     </footer>
   </div>
-  
-  
 
 
-
-
+  <script src="paginareservaLabotario.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-  <script src="paginaPrincipal.js"></script>
 
 </body>
 

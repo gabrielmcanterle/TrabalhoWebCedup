@@ -5,16 +5,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cedup Hermann Hering</title>
-
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="paginaPrincipal.css">
- 
-  
-
+  <link rel="stylesheet" href="estilicazaoInstituicao.css">
 </head>
 
 <body>
-
   <div class="container">
     <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
       <a href="/paginaPrincipal.html" class="navbar-brand">
@@ -60,8 +55,8 @@
               Instituição
             </a>
             <ul class="dropdown-menu" aria-labelledby="dropdownInstituicao">
-              <li><a class="dropdown-item" href="/paginasInstituicao/paginaHistoria.html">História</a></li>
-              <li><a class="dropdown-item" href="/paginasInstituicao/paginaInstituicao.html">A Instituição</a></li>
+              <li><a class="dropdown-item" href="/paginaHistoria.html">História</a></li>
+              <li><a class="dropdown-item" href="/paginaInstituicao.html">A Instituição</a></li>
             </ul>
           </li>
           <!-- Dropdown Horários -->
@@ -95,82 +90,124 @@
           </li>
           <li class="nav-item">
             <div class="text-center" id="loginButton">
-              <a href="/paginaLogin/paginaLogin.html"><button type="button" class="btn btn-outline-primary me-2">Login</button></a>
+              <a href="paginaLogin.html"><button type="button" class="btn btn-outline-primary me-2">Login</button></a>
             </div>
           </li>
         </ul>
       </div>
     </nav>
   </div>
-  
 
 
-  
-      <div class="container col-xxl-8 px-4 pb-4 mt-5">
-        <div class="row flex-column flex-md-column flex-lg-row align-items-center g-5 pb-5">
-          <div class="col-10 col-sm-8 col-lg-6">
-            <img src="../images/cedup.jpg" class="d-block mx-auto img-fluid" alt="Bootstrap Themes" width="500px" height="500px" loading="lazy">
-          </div>
-          <div class="col-lg-6">
-            <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Instituição Gratuita e de Qualidade</h1>
-            <p class="lead">Faça como os nossos mais de 300 alunos, e se prepare para o mercado de trabalho!</p>
-            <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-              <a href="#cursos">
-                <button type="button" class="btn btn-primary btn-lg px-4 me-md-2">Conheça nossos cursos</button>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-      
+  <main>
+    <div class="container" style="max-width: 1200px;">
+      <!-- Seção de destaque com imagem de fundo -->
+      <section class="position-relative overflow-hidden p-5 text-center text-white" style="background-image: url('/images/instituicao.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+        <!-- Camada de opacidade na imagem -->
+        <div class="position-absolute top-0 start-0 w-100 h-100" style="background-color: rgba(0, 0, 0, 0.5); z-index: 1;"></div>
     
-
-      <div class="container marketing">
-        <hr class="featurette-divider">
-        <div class="row featurette">
-          <div class="col-md-7 order-2 order-md-1 text-center mt-4 mt-md-0">
-            <h1 class="featurette-heading fw-normal lh-1 mt-lg-5">Curso Técnico Pós-Médio</h1>
-            <p class="lead">O curso técnico prepara os alunos com conhecimentos práticos e teóricos para o mercado de 
-              trabalho. Focado em áreas específicas, combina aprendizado em
-               sala de aula e experiências práticas, formando profissionais qualificados em menos tempo.</p>
+        <!-- Conteúdo com texto -->
+        <div class="position-relative" style="z-index: 2;">
+            <h1 class="display-3 fw-bold" style="color: rgb(255, 255, 255); text-align: left;">CEDUP Hermann Hering</h1>
+            <h3 class="fw-normal" style="color: rgb(134, 131, 131); text-align: left;">Educação Profissional de Qualidade</h3>
+        </div>
+    </section>
+    
+  
+      <!-- Seção Sobre a Instituição -->
+      <section class="py-5">
+        <h2 class="pb-3 border-bottom text-center text-body-emphasis">Sobre a Instituição</h2>
+        <p class="text-body-secondary mt-4">
+          O CEDUP – CENTRO DE EDUCAÇÃO PROFISSIONAL HERMANN HERING é uma instituição que oferece Educação Profissional, permitindo ao cidadão o direito de desenvolvimento permanente de aptidões para o trabalho e convívio em sociedade.
+        </p>
+      </section>
+  
+      <!-- Modalidades oferecidas -->
+      <section class="py-5">
+        <h2 class="pb-3 border-bottom text-center text-body-emphasis">Modalidades Oferecidas</h2>
+        <div class="row g-5 mt-4">
+          <!-- Cursos Técnicos -->
+          <div class="col-md-6">
+            <h3 class="fw-bold text-body-emphasis">Cursos Técnicos</h3>
+            <p class="text-body-secondary">
+              Nesta modalidade, a organização curricular privilegia as práticas profissionais necessárias à inserção no mundo do trabalho. O CEDUP oferece 14 cursos técnicos:
+            </p>
+            <ul>
+              <li>Administração</li>
+              <li>Análises Clínicas</li>
+              <li>Comércio Exterior</li>
+              <li>Contabilidade</li>
+              <li>Desenvolvimento de Software</li>
+              <li>Edificações</li>
+              <li>Eletrônica</li>
+              <li>Eletrotécnica</li>
+              <li>Enfermagem</li>
+              <li>Hardware de Computadores e Redes</li>
+              <li>Marketing de Vendas</li>
+              <li>Mecânica</li>
+              <li>Secretariado</li>
+              <li>Segurança no Trabalho</li>
+            </ul>
           </div>
-          <div class="col-md-5 order-1 order-md-2">
-            <img src="/images/1.png" alt="" class="img-fluid" width="500px" height="300px">
+  
+          <!-- Cursos de Qualificação Profissional -->
+          <div class="col-md-6">
+            <h3 class="fw-bold text-body-emphasis">Cursos de Qualificação Profissional</h3>
+            <p class="text-body-secondary">
+              Nesta modalidade, os cursos e programas têm por objetivo a capacitação, aperfeiçoamento, especialização e atualização para o trabalho:
+            </p>
+            <ul>
+              <li>Análise de Hardware</li>
+              <li>AutoCAD</li>
+              <li>Corel Draw</li>
+              <li>Eletrônica Básica</li>
+              <li>Informática Profissional</li>
+              <li>Linux Firewall</li>
+              <li>Linux Básico</li>
+              <li>Preparação e Programação CNC</li>
+              <li>Programação em Delphi</li>
+              <li>PHP/MySQL</li>
+              <li>Programação em Java</li>
+              <li>SolidWorks</li>
+            </ul>
           </div>
         </div>
-      
-      
-      
-
-    <hr class="featurette-divider">
-
-    <div class="row featurette">
-      <div class="col-md-7 order-2 order-md-1 text-center mt-4 mt-md-0">
-        <h1 class="featurette-heading fw-normal lh-1 mt-lg-5">Ensino médio Integrado</h1>
-        <p class="lead ms-lg-5">O Ensino Médio Integrado combina a formação acadêmica com o 
-          aprendizado técnico, preparando os alunos tanto para o mercado de trabalho quanto para o ensino superior. 
-          Nossa instituição oferece uma educação completa, 
-          unindo teoria e prática, para formar profissionais qualificados e cidadãos preparados para os
-           desafios do futuro.</p>
-      </div>
-      <div class="col-md-5 order-1 order-md-2">
-        <img src="/images/2.png" alt="" class="img-fluid" width="500px" height="300px">
-      </div>
+      </section>
+  
+      <!-- Ensino Médio Integrado -->
+      <section class="py-5">
+        <h2 class="pb-3 border-bottom text-center text-body-emphasis">Ensino Médio Integrado</h2>
+        <p class="text-body-secondary">
+          Formação profissional em nível técnico (Administração, Informática e Mecânica) a partir da 1ª série do Ensino Médio, com duração de 4 anos. 
+        </p>
+        <p class="text-body-secondary">
+          Ao matricular-se no CEDUP Hermann Hering, o aluno ingressa em uma das mais conceituadas escolas de educação profissional de Santa Catarina, reconhecida pela qualidade dos docentes, estrutura moderna, segurança e tecnologias de última geração.
+        </p>
+      </section>
+  
+      <!-- Estrutura -->
+      <section class="py-5">
+        <h2 class="pb-3 border-bottom text-center text-body-emphasis">Estrutura Disponível</h2>
+        <div class="row g-5 mt-4">
+          <div class="col-md-4">
+            <h4 class="fw-semibold text-body-emphasis">Laboratórios</h4>
+            <p class="text-body-secondary">25 laboratórios equipados com tecnologias avançadas.</p>
+          </div>
+          <div class="col-md-4">
+            <h4 class="fw-semibold text-body-emphasis">Professores</h4>
+            <p class="text-body-secondary">125 professores altamente qualificados.</p>
+          </div>
+          <div class="col-md-4">
+            <h4 class="fw-semibold text-body-emphasis">Equipe Administrativa</h4>
+            <p class="text-body-secondary">35 profissionais para suporte e atendimento.</p>
+          </div>
+        </div>
+      </section>
+  
     </div>
+  </main>
+  
 
-    <hr class="featurette-divider">
-
-  </div>
-
-  <div class="container my-5">
-    <div class="p-5 text-center bg-body-tertiary rounded-3">
-      <h1 class="text-body-emphasis">Ficou com dúvidas?</h1>
-      <p class="lead">
-        Entre em contato conosco ou nos visite; estaremos de portas abertas para <code>você!</code>
-      </p>
-      <a href=""><button type="button" class="btn btn-outline-dark">Fale Conosco</button></a>
-    </div>
-  </div>
 
   <div class="container">
     <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
@@ -182,14 +219,14 @@
       <p class="col-12 col-md-3 mb-0 text-body-secondary text-center text-md-end">Cedup Hermann Hering, desde 1979.</p>
     </footer>
   </div>
-  
-  
+
+
+   
 
 
 
-
+  <script src="scriptInstituicao.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-  <script src="paginaPrincipal.js"></script>
 
 </body>
 
